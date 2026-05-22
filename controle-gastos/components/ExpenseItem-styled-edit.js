@@ -14,11 +14,10 @@ import {
 
 export default function HomeScreen() {
     //Estado para os campos de formulario
-    const [descricao, setDescricao] = useState("");     //Descrição do gasto
+    const [descricao, setDescricao] = useState([]);     //Descrição do gasto
     const [valor, setValor] = useState("");             //Valor do Gasto
-    const [gastos, setGastos] = useState("");           //Lista de Gasto
-    const [editandoId, setEditandoId] = useState("");   //Id do item sendo editado
-    (null); //Id do Item Sendo editado
+    const [gastos, setGastos] = useState([]);           //Lista de Gasto
+    const [editandoId, setEditandoId] = useState(null);   //Id do item sendo editado
 
     // Função para adicionar um novo gasto ou atualizar um existente
     const adicionarOuAtualizarGasto = () => {
@@ -149,33 +148,66 @@ export default function HomeScreen() {
     );
 }
 
-// Estilos para os componentes
+// Estilos aplicados à interface
 const styles = StyleSheet.create({
-    container: {
-
-    },
-    title: {
-
-    },
-    input: {
-
-    },
-    button: {
-
-    },
-    buttonText: {
-
-    },
-    actions: {
-
-    },
-    editButton: {
-
-    },
-    deleteButton: {
-
-    },
-    actionText: {
-
-    }
-})
+container: {
+flex: 1,
+padding: 20,
+paddingTop: 60,
+backgroundColor: '#f5f5f5',
+},
+title: {
+fontSize: 22,
+fontWeight: 'bold',
+marginBottom: 20,
+textAlign: 'center',
+},
+input: {
+backgroundColor: '#fff',
+padding: 12,
+borderRadius: 8,
+marginBottom: 10,
+borderWidth: 1,
+borderColor: '#ccc',
+},
+button: {
+backgroundColor: '#3b82f6',
+padding: 12,
+borderRadius: 8,
+alignItems: 'center',
+marginBottom: 20,
+},
+buttonText: {
+color: '#fff',
+fontWeight: 'bold',
+},
+itemContainer: {
+backgroundColor: '#e0e7ff',
+borderRadius: 8,
+padding: 10,
+marginBottom: 10,
+},
+item: {
+fontSize: 16,
+marginBottom: 5,
+},
+actions: {
+flexDirection: 'row',
+justifyContent: 'flex-end',
+gap: 10, // Espaço entre os botões (em versões recentes do React Native)
+},
+editButton: {
+marginRight: 10,
+},
+deleteButton: {},
+actionText: {
+color: '#2563eb',
+fontWeight: 'bold',
+},
+total: {
+marginTop: 20,
+fontSize: 18,
+fontWeight: 'bold',
+textAlign: 'center',
+},
+});
