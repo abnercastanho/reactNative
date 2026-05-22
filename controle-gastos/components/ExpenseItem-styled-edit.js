@@ -78,6 +78,82 @@ export default function HomeScreen(){
         setEditandoId(id); // Define o ID do item que está sendo editado
     };
 
-    }
+    //Calculo do vlaor de gastos 
+    const totalGastos = gastos.reduce((acc, item) => acc + parseFloat(item.valor), 0).toFixed(2); // Calcula o total dos gastos e formata para 2 casas decimais
 
+    //retorna os elementos visuais da interface
+    return(
+        <View style={styles.container}>
+            <Text style={styles.titulo}>Controle de Gastos</Text>
+
+                {/*Campo par entrada de descrição */}
+                <TextInput
+                    style={styles.input}
+                    placeholder="Descrição do gasto"
+                    value={descricao}
+                    onChangeText={setDescricao}
+                />
+                  {/*Campo par entrada do valor */}
+                <TextInput
+                    style={styles.input}
+                    keyboardType='numeric'
+                    placeholder="Valor"
+                    placeholder="Valor do gasto"
+                    value={valor}
+                    onChangeText={setValor}
+                />
+
+                {/*Botão para adicionar valor a lista */}
+                <TouchableOpacity style={styles.button} onPress={adicionarOuAtualizarGasto}>
+                    <Text style={styles.buttonText}>
+                        {editandoId ? "Atualizar Gasto" : "Adicionar Gasto"} 
+
+                    </Text>
+                </TouchableOpacity>
+
+                {/*Exibição do total de gastos na FlatList*/}
+                <FlatList
+                    data={gastos} // Dados para a lista
+                    keyExtractor={(item) => item.id} // Extrai a chave única para cada item
+                    renderItem={({ item }) => (
+                        <View style={styles.itemContaniner}>
+                            (/*Exibição da descrição e valor de cada gasto na lista*/)
+                            <Text style={styles.item}>
+                                {item.descricao} - R$ {item.valor}
+                            
+                            </Text>
+                            
+                            {/*Ações de edição e remoção*/}
+
+                        </View>
+                    )}
+                />        
+            </View>
+    );
+}
+
+//estilos para os componentes visuais
+
+const styles = StyleSheet.create({
+    container: {
+
+    },
+
+    titulo: {
+
+    },
+
+    input: {
+
+
+    },
+
+    button: {
+
+    },
+
+    buttonText: {
+
+    }
+});   
 
